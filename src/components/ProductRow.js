@@ -6,9 +6,15 @@ class ProductRow extends React.Component {
     }
 
     render() {
+        let name;
+        if(this.props.stocked){
+            name = <td>{this.props.name}</td>;
+        } else {
+            name = <td style={{color:'red'}}>{this.props.name}</td>;
+        }
         return (
             <tr>
-                <td>{this.props.name}</td>
+                {name}
                 <td>{this.props.price}</td>
             </tr>
         )

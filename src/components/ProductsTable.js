@@ -9,11 +9,6 @@ class ProductsTable extends React.Component {
     super(props);
   }
 
-  //loading the data
-  componentDidMount(){
-
-  }
-
   filterProducts(list, category) {
       return list.filter((product) => {
           return product.category === category;
@@ -34,22 +29,12 @@ class ProductsTable extends React.Component {
   }
 
   render() {
-    // let productList = data.map((product,index) => {
-    //     return (
-    //         <ProductRow 
-    //             key={index}
-    //             category={product.category}
-    //             price={product.price}
-    //             stocked={product.stocked}
-    //             name={product.name}/> 
-    //     )
-    // });
-
+    
     let sportsList = this.filterProducts(data,'Sporting Goods');
     let elecList = this.filterProducts(data,'Electronics');
-    
+
     return (
-      <table style={{width:'100%'}}>
+      <table style={{width:'90%'}}>
         <tbody>
           <tr>
             <td><b>Name</b></td>
