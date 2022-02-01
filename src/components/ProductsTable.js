@@ -9,15 +9,45 @@ class ProductsTable extends React.Component {
     super(props);
   }
 
+  //loading the data
+  componentDidMount(){
+
+  }
+
+  filterProducts(list, category) {
+      return list.filter((product) => {
+          return product.category === category;
+      })
+  }
+
+  listToComponents(list) {
+    return list.map((product,index) => {
+            return (
+                <ProductRow 
+                    key={index}
+                    category={product.category}
+                    price={product.price}
+                    stocked={product.stocked}
+                    name={product.name}/> 
+            )
+        })
+  }
+
   render() {
     // let productList = data.map((product,index) => {
-    //     if (product.category == 'Sporting Good'){
+    //     return (
+    //         <ProductRow 
+    //             key={index}
+    //             category={product.category}
+    //             price={product.price}
+    //             stocked={product.stocked}
+    //             name={product.name}/> 
+    //     )
+    // });
 
-    //     } else if (product.category == 'Electronics'){
-
-    //     }
-    // })
-    console.log(data);
+    let sportsList = this.filterProducts(data,'Sporting Goods');
+    let elecList = this.filterProducts(data,'Electronics');
+    
     return (
       <table style={{width:'100%'}}>
         <tbody>
@@ -25,12 +55,10 @@ class ProductsTable extends React.Component {
             <td><b>Name</b></td>
             <td><b>Price</b></td>
           </tr>
-          <ProductsCategoryRow categoryName='Sporting Goods'/>
-          <ProductRow productName='Football' productPrice='$49.99'/>  
-
-
-
-          <ProductsCategoryRow categoryName='Electronics'/>
+          <ProductsCategoryRow category='Sporting Goods'/>
+          {this.listToComponents(sportsList)}
+          <ProductsCategoryRow category='Electronics'/>
+          {this.listToComponents(elecList)}
         </tbody>
       </table>
     );
