@@ -24,7 +24,6 @@ class FilteredTable extends React.Component {
     render(){
         return(
             <div>
-                <h2>List of Products</h2>
                 <SearchFilter 
                 onSearchChange={this.onSearchChange} 
                 onCheckboxChange={this.onCheckboxChange}/>
