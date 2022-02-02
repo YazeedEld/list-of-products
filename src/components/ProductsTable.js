@@ -9,9 +9,13 @@ class ProductsTable extends React.Component {
     super(props);
   }
 
-  filterProducts(list, category) {
+  filterProducts(list, category, searchField, isChecked) {
       return list.filter((product) => {
-          return product.category === category;
+          return (
+            product.category === category &&
+            product.name.toLowerCase().includes(searchField.toLowerCase()) &&
+            !(isChecked && !product.stocked)
+          );
       })
   }
 
@@ -29,9 +33,10 @@ class ProductsTable extends React.Component {
   }
 
   render() {
+    let {searchField, isChecked} = this.props;
     
-    let sportsList = this.filterProducts(data,'Sporting Goods');
-    let elecList = this.filterProducts(data,'Electronics');
+    let sportsList = this.filterProducts(data,'Sporting Goods', searchField, isChecked);
+    let elecList = this.filterProducts(data,'Electronics', searchField, isChecked);
 
     return (
       <table style={{width:'90%'}}>

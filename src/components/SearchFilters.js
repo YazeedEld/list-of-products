@@ -6,19 +6,21 @@ class SearchFilter extends React.Component {
     }
 
     render () {
+        const {onSearchChange, onCheckboxChange} = this.props;
         return (
             <form className='filters'>
                 <input 
                 type='text' 
                 name='searchFilter' 
-                placeholder='Search...'/>
+                placeholder='Search...'
+                onChange={onSearchChange}/>
                 <br/>
                 <input
                 type='checkbox'
                 id='inStock'
-                name='inSotck'/>
+                name='inSotck'
+                onChange={onCheckboxChange}/>
                 <label htmlFor='inStock'>Only show products in stock</label>
-
             </form>
         )
     }
